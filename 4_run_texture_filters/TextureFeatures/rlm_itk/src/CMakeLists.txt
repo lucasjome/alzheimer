@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 3.1)
+
+set(CMAKE_CXX_STANDARD 11)
+
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+SET( ProgramName "computeRLMFeatures" )
+PROJECT( ${ProgramName} )
+
+FIND_PACKAGE (ITK REQUIRED)
+IF (ITK_FOUND)
+	INCLUDE( ${ITK_USE_FILE} )
+ENDIF(ITK_FOUND)
+
+
+INCLUDE_DIRECTORIES(
+	${CMAKE_CURRENT_SOURCE_DIR} 
+)
+
+SET( SRCS
+)
+
+ADD_EXECUTABLE( ${ProgramName}
+    computeRLMFeatures.cxx 
+    ${SRCS} 
+)
+
+LINK_DIRECTORIES(
+	${PROJECT_BINARY_DIR}/lib
+)
+
+TARGET_LINK_LIBRARIES( ${ProgramName}
+   	${ITK_LIBRARIES}
+)
